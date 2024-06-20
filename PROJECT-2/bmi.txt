@@ -1,0 +1,46 @@
+def calculate_bmi(weight, height_cm):
+  """
+  Calculates the Body Mass Index (BMI) based on weight in kilograms and height in centimeters.
+
+  Args:
+      weight: User's weight in kilograms (kg).
+      height_cm: User's height in centimeters (cm)
+
+  Returns:
+      The calculated BMI value.
+  """
+
+  height_m = height_cm / 100  # Convert height from cm to meters
+  bmi = weight / (height_m * height_m)
+  return bmi
+
+def interpret_bmi(bmi):
+  """
+  Interprets the calculated BMI value and provides a corresponding message.
+
+  Args:
+      bmi: The calculated BMI value.
+
+  Returns:
+      A string message interpreting the BMI category.
+  """
+
+  if bmi < 18.5:
+    return "You are underweight."
+  elif 18.5 <= bmi <= 24.9:
+    return "You are in a healthy weight range."
+  elif 25 <= bmi <= 29.9:
+    return "You are overweight."
+  else:
+    return "You are obese."
+
+# Get user input
+weight = float(input("Enter your weight in kilograms (kg): "))
+height_cm = float(input("Enter your height in centimeters (cm): "))
+
+# Calculate BMI
+bmi = calculate_bmi(weight, height_cm)
+
+# Print BMI and interpretation
+print(f"Your BMI is: {bmi:.2f}")  # Format BMI to two decimal places
+print(interpret_bmi(bmi))
